@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FarmFresh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --green-dark: #4a7c2f;
+            --green-light: #eaf2df;
+            --green-soft: #dfead1;
+            --text-dark: #2e2e2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+        }
+
+        /* NAVBAR */
+        header {
+            background-color: var(--green-dark);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 26px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO */
+        .hero {
+            background: 
+                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url("https://images.unsplash.com/photo-1542838132-92c53300491e");
+            background-size: cover;
+            background-position: center;
+            padding: 80px 50px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .hero button {
+            background-color: var(--green-dark);
+            border: none;
+            padding: 12px 28px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .hero button:hover {
+            background-color: #3e6826;
+        }
+
+        /* SECTION */
+        section {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        section h3 {
+            font-size: 28px;
+            margin-bottom: 35px;
+        }
+
+        /* CATEGORIES */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: var(--green-soft);
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card img {
+            width: 60px;
+            margin-bottom: 15px;
+        }
+
+        .card h4 {
+            font-size: 18px;
+        }
+
+        /* WHY CHOOSE US */
+        .why {
+            background-color: var(--green-light);
+            max-width: 700px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .why li {
+            list-style: none;
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .why li::before {
+            content: "✔";
+            color: var(--green-dark);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--green-dark);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>FarmFresh</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Cart</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="hero-content">
+        <h2>Fresh From Farmers<br>to Your Home</h2>
+        <p>
+            Buy fresh vegetables, fruits, grains and dairy
+            directly from local farmers.
+        </p>
+        <button onclick="shopNow()">Shop Now</button>
+    </div>
+</div>
+
+<section>
+    <h3>Product Categories</h3>
+    <div class="categories">
+        <div class="card">
+            <img src="https://img.icons8.com/color/96/broccoli.png">
+            <h4>Vegetables</h4>
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/color/96/apple.png">
+            <h4>Fruits</h4>
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/color/96/wheat.png">
+            <h4>Grains</h4>
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/color/96/milk-bottle.png">
+            <h4>Dairy</h4>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>Why Choose Us?</h3>
+    <ul class="why">
+        <li>Fresh Products</li>
+        <li>Direct from Farmers</li>
+        <li>Affordable Prices</li>
+        <li>Support Local Farmers</li>
+    </ul>
+</section>
+
+<footer>
+    © 2026 FarmFresh Marketplace
+</footer>
+
+<script>
+    function shopNow() {
+        alert("Redirecting to products page...");
+    }
+</script>
+
+</body>
+</html>
