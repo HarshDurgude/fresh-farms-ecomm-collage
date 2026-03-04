@@ -10,10 +10,20 @@ const products = [
     { id: 9, name: "Greek Yogurt", category: "Dairy", price: 4.50, image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=400&q=80", featured: false }
 ];
 
-let cart = JSON.parse(localStorage.getItem('farmfresh_cart')) || [];
+let cart = [];
+try {
+    const savedCart = localStorage.getItem('farmfresh_cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+    }
+} catch (e) {
+    console.error("Error loading cart from localStorage:", e);
+    cart = [];
+}
 
 // Page Navigation
 function showPage(pageId) {
+    console.log("Showing page:", pageId);
     // Hide all pages
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => page.classList.add('hidden'));
@@ -23,6 +33,8 @@ function showPage(pageId) {
     if (selectedPage) {
         selectedPage.classList.remove('hidden');
         window.scrollTo(0, 0);
+    } else {
+        console.warn("Page not found:", pageId);
     }
 
     // Special logic for certain pages
@@ -83,7 +95,7 @@ function createProductCard(product) {
             <span class="product-cat">${product.category}</span>
             <h4 class="product-name">${product.name}</h4>
             <div class="product-price">$${product.price.toFixed(2)}</div>
-            <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+            <button class="add-to-cart" onclick="addToCart(${product.id}, event)">Add to Cart</button>
         </div>
     `;
     return card;
@@ -96,7 +108,7 @@ function filterProducts(category) {
 }
 
 // Cart Management
-function addToCart(productId) {
+function addToCart(productId, event) {
     const product = products.find(p => p.id === productId);
     const cartItem = cart.find(item => item.id === productId);
 
@@ -109,23 +121,32 @@ function addToCart(productId) {
     updateCart();
     
     // Animation/Feedback
-    const btn = event.target;
-    const originalText = btn.textContent;
-    btn.textContent = "Added!";
-    btn.style.backgroundColor = "#4a7c2f";
-    btn.style.color = "white";
-    
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.backgroundColor = "";
-        btn.style.color = "";
-    }, 1000);
+    if (event && event.target) {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = "Added!";
+        btn.style.backgroundColor = "#4a7c2f";
+        btn.style.color = "white";
+        
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = "";
+            btn.style.color = "";
+        }, 1000);
+    }
 }
 
 function updateCart() {
-    localStorage.setItem('farmfresh_cart', JSON.stringify(cart));
+    try {
+        localStorage.setItem('farmfresh_cart', JSON.stringify(cart));
+    } catch (e) {
+        console.error("Error saving cart to localStorage:", e);
+    }
     const count = cart.reduce((total, item) => total + item.quantity, 0);
-    document.getElementById('cart-count').textContent = count;
+    const cartCountEl = document.getElementById('cart-count');
+    if (cartCountEl) {
+        cartCountEl.textContent = count;
+    }
 }
 
 function changeQty(productId, delta) {
@@ -235,6 +256,7 @@ function processPayment(event) {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("FarmFresh JS initialized");
     updateCart();
     renderFeaturedProducts();
     
