@@ -116,7 +116,7 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-.hero button, .checkout-btn, .place-order-btn, .contact-form button, #empty-cart-msg button, .confirmation-container button {
+.hero button, .checkout-btn, .place-order-btn, .contact-form button, #empty-cart-msg button, .confirmation-container button, .auth-container button, .admin-container button {
     background-color: var(--green-medium);
     border: none;
     padding: 14px 32px;
@@ -127,10 +127,15 @@ nav a:hover {
     font-weight: 600;
     transition: background 0.3s;
     display: inline-block;
+    width: auto;
 }
 
-.hero button:hover, .checkout-btn:hover, .place-order-btn:hover, .contact-form button:hover, #empty-cart-msg button:hover, .confirmation-container button:hover {
+.hero button:hover, .checkout-btn:hover, .place-order-btn:hover, .contact-form button:hover, #empty-cart-msg button:hover, .confirmation-container button:hover, .auth-container button:hover, .admin-container button:hover {
     background-color: var(--green-dark);
+}
+
+.auth-container button, .admin-form-box button {
+    width: 100%;
 }
 
 /* SECTION COMMON */
@@ -565,19 +570,93 @@ footer {
     to { transform: rotate(360deg); }
 }
 
+/* AUTH & ADMIN */
+.auth-container, .admin-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.admin-container {
+    max-width: 1000px;
+}
+
+.admin-flex {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.admin-form-box, .admin-list-box {
+    flex: 1;
+}
+
+.admin-form-box select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+#user-email-display {
+    color: var(--green-soft);
+    font-weight: 600;
+}
+
+.admin-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-edit-btn {
+    color: var(--green-medium);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: bold;
+}
+
+#cancel-edit-btn {
+    background-color: #757575;
+    margin-top: 10px;
+}
+
+#cancel-edit-btn:hover {
+    background-color: #616161;
+}
+
+.admin-delete-btn {
+    color: #ff5252;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: bold;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .checkout-flex {
+    .admin-flex {
         flex-direction: column;
-    }
-    .hero h2 {
-        font-size: 36px;
-    }
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    nav a {
-        margin: 0 10px;
     }
 }
