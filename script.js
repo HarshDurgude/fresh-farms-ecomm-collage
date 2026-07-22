@@ -43,8 +43,8 @@ function renderProducts(filter = 'All') {
     if (!grid) return;
 
     grid.innerHTML = '';
-    const filteredProducts = filter === 'All' 
-        ? products 
+    const filteredProducts = filter === 'All'
+        ? products
         : products.filter(p => p.category === filter);
 
     filteredProducts.forEach(product => {
@@ -135,7 +135,7 @@ async function login(event) {
                     try {
                         cart = JSON.parse(data.user.cart);
                         updateCartCount();
-                    } catch(e) { cart = []; }
+                    } catch (e) { cart = []; }
                 }
                 showPage('home');
             }
@@ -186,7 +186,7 @@ function addToCart(productId, event) {
 
     updateCartCount();
     saveCartToDB();
-    
+
     if (event && event.target) {
         const btn = event.target;
         const originalText = btn.textContent;
@@ -242,7 +242,7 @@ function renderCart() {
     const container = document.getElementById('cart-items');
     const summary = document.getElementById('cart-summary');
     const emptyMsg = document.getElementById('empty-cart-msg');
-    
+
     if (cart.length === 0) {
         container.innerHTML = '';
         summary.classList.add('hidden');
@@ -316,7 +316,7 @@ function editProduct(id) {
     document.getElementById('admin-form-title').textContent = "Edit Product";
     document.getElementById('admin-form-btn').textContent = "Update Product";
     document.getElementById('cancel-edit-btn').classList.remove('hidden');
-    
+
     window.scrollTo(0, document.getElementById('admin-page').offsetTop);
 }
 
@@ -427,7 +427,7 @@ async function processPayment(event) {
             body: JSON.stringify({ email: currentUser.email, order: orderData })
         });
         const data = await response.json();
-        
+
         if (data.success) {
             setTimeout(() => {
                 overlay.classList.add('hidden');

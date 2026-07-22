@@ -46,10 +46,10 @@ def init_db():
                 Product(name="Fresh Broccoli", category="Vegetables", price=3.50, image="https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=400&q=80", featured=True),
                 Product(name="Organic Apples", category="Fruits", price=4.20, image="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=400&q=80", featured=True),
                 Product(name="Whole Wheat Grains", category="Grains", price=6.00, image="https://images.unsplash.com/photo-1501265976582-c1e1b0bbaf63?auto=format&fit=crop&w=400&q=80", featured=False),
-                Product(name="Red Tomatoes", category="Vegetables", price=2.50, image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80", featured=True),
+                Product(name="Vegetables", category="Vegetables", price=2.50, image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80", featured=True),
                 Product(name="Sweet Carrots", category="Vegetables", price=1.80, image="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=400&q=80", featured=False),
                 Product(name="Yellow Bananas", category="Fruits", price=1.20, image="https://images.unsplash.com/photo-1603833665858-e61d17a86224?auto=format&fit=crop&w=400&q=80", featured=False),
-                Product(name="Local Honey", category="Grains", price=8.50, image="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80", featured=False),
+                Product(name="Watermelon", category="Fruits", price=8.50, image="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80", featured=False),
                 Product(name="Greek Yogurt", category="Dairy", price=4.50, image="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=400&q=80", featured=False)
             ]
             db.session.bulk_save_objects(initial_products)
